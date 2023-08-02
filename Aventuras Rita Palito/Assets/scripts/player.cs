@@ -9,7 +9,7 @@ public class player : MonoBehaviour
     //vector de posição inicial dp player
     private Vector3 posInicial;
     //variavel velocidade
-    private float speed;
+    private float Speed = 5;
 
  
     void Start()
@@ -22,7 +22,8 @@ public class player : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        rig.velocity = new Vector2(speed, rig.velocity.y);
+        rig.velocity = new Vector2(Speed, rig.velocity.y);
+        rig.velocity = new Vector2(Input.GetAxis("Horizontal") * Speed, rig.velocity.y);
         //verifica se a tecla a foi pressionada e o valor x da escala esta positivo
         if (Input.GetKeyDown(KeyCode.A) && transform.localScale.x > 0 )
         {
