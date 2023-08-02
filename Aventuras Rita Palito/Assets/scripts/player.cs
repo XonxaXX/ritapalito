@@ -12,7 +12,11 @@ public class player : MonoBehaviour
     private float Speed = 5;
     //componente animator
     public Animator animator;
- 
+
+    private bool isJumping = false;
+    private float JumpForce = 8;
+
+
     void Start()
     {
         rig = GetComponent<Rigidbody2D>();
@@ -47,8 +51,11 @@ public class player : MonoBehaviour
                 transform.localScale.y, transform.localScale.z);
             //Debug.Log("Tecla D pressionada");
         }
-
-
+        //verificar se a tecla de pular foi pressionada
+        if (Input.GetKeyDown(KeyCode.Space))
+        {
+            rig.AddForce(Vector2.up * JumpForce, ForceMode2D.Impulse);
+        }
 
     }
 }
