@@ -2,18 +2,18 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class player : MonoBehaviour
+public class Player : MonoBehaviour
 {
     //variavel para o rigidbody
     private Rigidbody2D rig;
-    //vector de posição inicial dp player
+    //vector de posiï¿½ï¿½o inicial dp player
     private Vector3 posInicial;
     //variavel velocidade
     private float Speed = 5;
     //componente animator
     public Animator animator;
 
-    private bool isJumping = false;
+    public bool isJumping = false;
     private float JumpForce = 8;
 
 
@@ -57,5 +57,12 @@ public class player : MonoBehaviour
             rig.AddForce(Vector2.up * JumpForce, ForceMode2D.Impulse);
         }
 
+    }
+    private void OnTriggerEnter2D(Collider 2D collision)
+    {
+        if(collision.gameObject.CompareTag("Line"))
+        {
+            transform.position = posInicial;
+        }
     }
 }
